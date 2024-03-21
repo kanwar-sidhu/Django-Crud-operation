@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .main {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+            width: 100%;
+            max-width: 600px;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: auto auto; /* Creates a two-column grid */
+            gap: 10px; /* Spacing between grid items */
+            margin-bottom: 20px; /* Space before the buttons */
+        }
+        .details-grid div {
+            padding: 10px; /* Padding inside each grid item */
+        }
+        .buttons-container {
+            text-align: center;
+        }
+        button {
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .back-list {
+            background-color: #083761; /* Yellow */
+        }
+        .update-button {
+            background-color: #ffc107; /* Yellow */
+        }
+        .delete-button {
+            background-color: #dc3545; /* Red */
+        }
+        button a {
+            color: rgb(247, 247, 250);
+            text-decoration: none;
+            display: block; /* Ensures the entire area of the button is clickable */
+        }
+        .back-list:hover {
+            background-color: #122889; /* Darker yellow */
+        }
+        .update-button:hover {
+            background-color: #e0a800; /* Darker yellow */
+        }
+        .delete-button:hover {
+            background-color: #c82333; /* Darker red */
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>Person Details</h2>
+        <div class="details-grid">
+            <div><strong>First Name:</strong> {{ data.firstname }}</div>
+            <div><strong>Last Name:</strong> {{ data.lastname }}</div>
+            <div><strong>Phone:</strong> {{ data.phone }}</div>
+            <div><strong>Joined Date:</strong> {{ data.joined_date | date:"Y-m-d" }}</div>
+        </div>
+        <div class="buttons-container">
+            <button class="back-list"><a href="{% url 'list' %}">Back to List</a></button>
+            <button class="update-button"><a href="{% url 'update' data.id %}">Update</a></button>
+            <button class="delete-button"><a href="{% url 'delete' data.id %}">Delete</a></button>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add  New Worker in Company</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input[type="submit"], .button-link {
+            background-color: blue;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button-link {
+            border: 1px solid blue;
+            padding: 9px 14px; /* Adjusting for border to align height with submit button */
+        }
+        .button-link:hover, input[type="submit"]:hover {
+            background-color: darkblue;
+        }
+        .button-link a {
+            color: white;
+            text-decoration: none;
+            display: block; /* Ensures the entire area of the button is clickable */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <h2>Add New Person</h2>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data"> 
+        <!-- Security token -->
+        {% csrf_token %}     
+        <!-- Using the formset -->
+        {{ form.as_p }}
+         
+        <input type="submit" value="Submit">
+    </form>
+    <div class="button-link"><a href="{% url 'list' %}">Back to List</a></div>
+    
+</body>
+</html>
